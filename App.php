@@ -3,7 +3,7 @@ include_once "../controllers/Controller.php";
 $BASE_URL = $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 class App  
 {
-    protected $controller = 'Home';
+    protected $controller = 'HomeController';
     protected $method = 'index';
     protected $params = [];
 
@@ -11,10 +11,11 @@ class App
     {
         $url=$this->parseURL();
 
-        if(file_exists('../controllers/'. $url[0].'Controller.php')){
+        if(isset($url[0]) && $url[0] && file_exists('../controllers/'. $url[0].'Controller.php')){
             $this->controller=$url[0]."Controller";
             unset($url[0]);
         }
+
         require_once '../controllers/' . $this->controller.'.php';
         $this->controller = new $this->controller;
         if (isset($url[1])){
@@ -23,9 +24,11 @@ class App
                 unset($url[1]);
             }
         }
+
         if (!empty($url)) {
             $this->params = array_values($url);
         }
+
         call_user_func_array([$this->controller, $this->method], $this->params);
     }
     public function parseURL()

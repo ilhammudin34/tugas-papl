@@ -7,42 +7,42 @@ class BarangController extends Controller
 {
 	function index()
 	{
-		// echo "barang controler/index";
 		$data = $this->model("BarangModel")->getBarang();
 		$this->view('barang/index',["barang"=>$data]);
 	}
 
-	function get($key,$value)
+	
+	function tambah()
 	{
-		$get = BarangModel::get("
-			$key like '%$value%'
-		");
-		return $get;
+	 $idBarang=$_POST["idBarang"];
+	 $namaBarang=$_POST["namaBarang"];
+	 $jumlah=$_POST["jumlah"];
+
+	 $insert = $this->model("BarangModel")->tambah($idBarang,$namaBarang,$jumlah);
+
+	 header("location:".BASEURL."/barang");
 	}
 
-	 function insert($value)
-	 {
-	 	// $value = "($kode_barang,$nama_barang,$jumlah_barang)";
-	 	return BarangModel::insert($value);
-	 }
+	function cari($nama_barang)
+	{
+		$data = $this->model("BarangModel")->getBarang($nama_barang);
+		$this->view('barang/index',["barang"=>$data]);
+	}
 
-	
-	 function cari($nama_barang)
-	 {
-		echo "cok =".$nama_barang;
-	 }
-	 function tambah()
-	 {
+	function edit($kode_barang)
+	{
 		$idBarang=$_POST["idBarang"];
 		$namaBarang=$_POST["namaBarang"];
 		$jumlah=$_POST["jumlah"];
-
-		$this->model("BarangModel")->tambah($idBarang,$namaBarang,$jumlah);
-
+		$update = $this->model("BarangModel")->edit($idBarang,$namaBarang,$jumlah,$kode_barang);
 		header("location:".BASEURL."/barang");
+	}
 
-	 }
+	function hapus()
+	{
+		$kode_barang = $_POST['kode_barang'];
+		$this->model("BarangModel")->hapus($kode_barang);
+		header('Location: '.BASEURL.'/barang');
+	}
+
 }
-
-// $get = BarangController::get();
-// print_r($get);

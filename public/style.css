@@ -1,67 +1,67 @@
-body{
-	background: #ccc;
-	font-family: cursive;
+body {
+  background: #ccc;
+  font-family: cursive;
 }
-.mytabs{
-	display: flex;
-	flex-wrap: wrap;
-	max-width: 600px;
-	margin: 50px auto;
-	padding: 25px;
+.mytabs {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 25px;
 }
-.mytabs input[type="radio"]{
-	display: none;
+.mytabs input[type="radio"] {
+  display: none;
 }
 .mytabs label {
-	background: #e2e2e2;
-	padding: 25px;
-	font-weight: bold;
+  background: #e2e2e2;
+  padding: 25px;
+  font-weight: bold;
 }
-.mytabs .tab{
-	width: 100%;
-	padding: 20px;
-	background: #ffff;
-	order: 1;
-	display: none;
+.mytabs .tab {
+  width: 100%;
+  padding: 20px;
+  background: #ffff;
+  order: 1;
+  display: none;
 }
-.mytabs input[type="radio"]:checked + label + .tab{
-	display: block;
+.mytabs input[type="radio"]:checked + label + .tab {
+  display: block;
 }
-.mytabs input[type="radio"]:checked + label{
-	background: #fff;
+.mytabs input[type="radio"]:checked + label {
+  background: #fff;
 }
-.mytabs .tab .cari{
-	text-align: center;
+.mytabs .tab .cari {
+  text-align: center;
 }
-.mytabs .tab .cari [type="text"]{
-	padding: 16px 95px;
+.mytabs .tab .cari [type="text"] {
+  height: 35px;
+  width: 320px;
+  padding: 5px;
 }
 
-.mytabs .tab button{
-	border: none;
-  	color: black;
-  	text-align: center;
-  	text-decoration: none;
-  	display: inline-block;
- 	font-size: 16px;
-  	margin: 10px;
-  	transition-duration: 0.4s;
-  	cursor: pointer;
-  	padding: 16px 32px;
-  	border-radius: 10px;
+.mytabs .tab button {
+  border: none;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  padding: 16px 32px;
+  border-radius: 10px;
 }
 .mytabs .tab .cari .buttonCari {
-  background-color: #4CAF50; 
-  color: black; 
+  background-color: #4caf50;
+  color: black;
   border-radius: 10px;
-  
 }
 
 .mytabs .tab .cari .hapus {
-  background-color: white; 
-  color: black; 
+  background-color: white;
+  color: black;
   border: 2px solid black;
-  
 }
 
 .mytabs .tab .cari .hapus:hover {
@@ -70,23 +70,22 @@ body{
 }
 
 .mytabs .tab .cari .edit {
-  background-color: white; 
-  color: black; 
+  background-color: white;
+  color: black;
   border: 2px solid black;
 }
-.mytabs .tab .tabel{
-	border-collapse: collapse;
-	margin-right: auto;
-	margin-left: auto;
-
+.mytabs .tab .tabel {
+  border-collapse: collapse;
+  margin-right: auto;
+  margin-left: auto;
 }
-.mytabs .tab .tambahbarang .tambah{
-	background-color: #4CAF50; 
-  	color: black; 
-  	border-radius: 10px;
+.mytabs .tab .tambahbarang .tambah {
+  background-color: #4caf50;
+  color: black;
+  border-radius: 10px;
 }
-.mytabs .tab .tambahbarang .clear{
-	background-color: white; 
-  	color: black; 
-  	border: 2px solid #4CAF50;
+.mytabs .tab .tambahbarang .clear {
+  background-color: white;
+  color: black;
+  border: 2px solid #4caf50;
 }

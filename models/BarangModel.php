@@ -47,29 +47,35 @@ class BarangModel
 	// 	return $res;
 	// }
 
-	function getBarang()
+	function getBarang($cari='')
 	{
-		// return [
-		// 	[
-		// 		"id"=>3,
-		// 		"nama_barang"=>"Bantal",
-		// 		"jumlah_barang"=>30
-		// 	],
-		// 	[
-		// 		"id"=>3,
-		// 		"nama_barang"=>"Guling",
-		// 		"jumlah_barang"=>30
-		// 	],
-		// ];
-		$this->db->query(
-			'select *
-			from '. $this->table
-		);
+		$sql = "select * from $this->table";
+
+		if ($cari != '') {
+			$sql .= " where nama_barang like '%$cari%'";
+		}
+
+		$this->db->query($sql);
 		return $this->db->resultset();
 	}
+
+	function hapus($kode_barang)
+	{
+		$sql = "delete from $this->table where kode_barang in (".implode(",",$kode_barang).")";
+		$this->db->query($sql);
+		return $this->db->execute();
+	}
+
+	function edit($idBarang,$namaBarang,$jumlah,$kode_barang)
+	{
+		$sql = "update $this->table set kode_barang='$idBarang', nama_barang='$namaBarang', jumlah_barang='$jumlah' where kode_barang='$kode_barang'";
+		$this->db->query($sql);
+		return $this->db->execute();
+	}
+
 	function tambah($idBarang,$namaBarang,$jumlah)
 	{
-		$query = "INSERT INTO barang (:kode_barang,:nama_barang,:jumlah_barang)";
+		$query = "INSERT INTO barang VALUES (:kode_barang,:nama_barang,:jumlah_barang)";
 		$this->db->query($query);
 		$this->db->bind("kode_barang",$idBarang);
 		$this->db->bind("nama_barang",$namaBarang);
